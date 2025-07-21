@@ -6,6 +6,12 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
+  devServer: {
+    host: true,
+    port: 8080,
+    // чтобы другие устройства в сети не могли зайти:
+    // disableHostCheck: true, (НЕ рекомендуется, только для отладки)
+  },
   plugins: [
     vue(),
     vueDevTools(),

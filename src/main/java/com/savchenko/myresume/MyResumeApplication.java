@@ -1,4 +1,4 @@
-package com.example.myresume;
+package com.savchenko.myresume;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

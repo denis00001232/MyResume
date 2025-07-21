@@ -10,9 +10,11 @@ export default {
     <div class="text">Денис Савченко</div>
   </div>
   <div class="text-container">
-    <div class="text">Full Stack разработчик с двумя годами опыта</div>
+    <div class="text">Full Stack разработчик уже 1.5 года</div>
   </div>
-  <div></div>
+  <div>
+
+  </div>
 </div>
 </template>
 
