@@ -58,7 +58,7 @@ public class GigaChatService {
     private String accessToken;
 
 
-    @Scheduled(fixedRate = 25, initialDelay = 0, timeUnit = TimeUnit.MINUTES)
+    @Scheduled(fixedRate = 600, initialDelay = 0, timeUnit = TimeUnit.SECONDS)
     private void updateToken() {
         webClient.post().
                 uri("/api/v2/oauth").

@@ -1,11 +1,11 @@
 <script setup>
-import Header from "@/components/Header.vue";
-import BeautifulBackground from "@/components/BeautifulBackground.vue";
+import BackgroundLines from "@/components/BackgroundLines.vue";
+import MainPanel from "@/components/MainPanel.vue";
 </script>
 
 <template>
-  <BeautifulBackground></BeautifulBackground>
-  <Header></Header>
+  <BackgroundLines/>
+  <main-panel/>
 </template>
 
 <style>

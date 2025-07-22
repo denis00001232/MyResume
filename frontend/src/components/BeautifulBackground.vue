@@ -77,7 +77,7 @@ export default {
 </script>
 
 <template>
-  <div class="container">
+  <div class="main-panel-container">
     <div class="redCube" :style="cubeRedStyle"></div>
     <div class="greenCube" :style="cubeGreenStyle"></div>
     <div class="yellowCube" :style="cubeYellowStyle"></div>
@@ -85,7 +85,7 @@ export default {
 </template>
 
 <style scoped>
-.container {
+.main-panel-container {
   position: fixed;
   width: 100%;
   height: 100%;
