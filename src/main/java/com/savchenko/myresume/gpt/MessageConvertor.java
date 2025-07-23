@@ -2,7 +2,6 @@ package com.savchenko.myresume.gpt;
 
 import com.savchenko.myresume.dto.GigaChatRequestDto;
 import com.savchenko.myresume.model.Message;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;

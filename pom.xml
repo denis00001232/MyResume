@@ -8,7 +8,7 @@
         <version>3.5.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.example</groupId>
+    <groupId>com.savchenko</groupId>
     <artifactId>MyResume</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>MyResume</name>
@@ -54,65 +54,29 @@
 
     <build>
         <plugins>
-            <!-- 1. Плагин для запуска Node/NPM команд -->
             <plugin>
-                <groupId>com.github.eirslett</groupId>
-                <artifactId>frontend-maven-plugin</artifactId>
-                <version>1.14.0</version>
-                <executions>
-                    <!-- Установка Node и npm -->
-                    <execution>
-                        <id>install-node-and-npm</id>
-                        <goals><goal>install-node-and-npm</goal></goals>
-                        <configuration>
-                            <nodeVersion>v18.17.1</nodeVersion>
-                            <npmVersion>9.8.1</npmVersion>
-                        </configuration>
-                    </execution>
-
-                    <!-- npm install -->
-                    <execution>
-                        <id>npm-install</id>
-                        <goals><goal>npm</goal></goals>
-                        <configuration>
-                            <arguments>install</arguments>
-                        </configuration>
-                    </execution>
-
-                    <!-- npm run build -->
-                    <execution>
-                        <id>npm-build</id>
-                        <goals><goal>npm</goal></goals>
-                        <configuration>
-                            <arguments>run build</arguments>
-                        </configuration>
-                    </execution>
-                </executions>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <workingDirectory>frontend</workingDirectory>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
-
-            <!-- 2. Плагин для копирования готового фронта -->
             <plugin>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>3.2.0</version>
-                <executions>
-                    <execution>
-                        <id>copy-frontend</id>
-                        <phase>process-resources</phase>
-                        <goals><goal>copy-resources</goal></goals>
-                        <configuration>
-                            <outputDirectory>${project.build.outputDirectory}/static</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>frontend/dist</directory>
-                                    <filtering>false</filtering>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
             </plugin>
         </plugins>
     </build>

@@ -130,4 +130,10 @@ export default {
   }
 
 }
+
+@media (max-width: 600px) {
+  .info-container {
+    background: rgba(255, 254, 254, 0.69);
+  }
+}
 </style>

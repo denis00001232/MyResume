@@ -47,4 +47,13 @@ export default {
     max-width: 90%;
   }
 }
+
+@media (max-width: 600px) {
+  .main-panel-container {
+    width: 98%;
+    background: rgba(208, 231, 255, 0);
+    padding: 40px 0;
+    box-shadow: none;
+  }
+}
 </style>

@@ -1,7 +1,6 @@
 package com.savchenko.myresume.gpt;
 
 
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -10,9 +9,7 @@ import com.savchenko.myresume.dto.GptResponseDto;
 import io.netty.handler.ssl.SslContext;
 import io.netty.handler.ssl.SslContextBuilder;
 import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
-import lombok.RequiredArgsConstructor;
-
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -24,12 +21,12 @@ import reactor.netty.http.client.HttpClient;
 import javax.net.ssl.SSLException;
 import java.util.concurrent.TimeUnit;
 
-@Slf4j
 @Service
 @EnableScheduling
-@RequiredArgsConstructor
 public class GigaChatService {
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(GigaChatService.class);
     private SslContext sslContext;
+
     {
         try {
             sslContext = SslContextBuilder.forClient()
@@ -56,6 +53,9 @@ public class GigaChatService {
     private ObjectMapper objectMapper = new ObjectMapper();
 
     private String accessToken;
+
+    public GigaChatService() {
+    }
 
 
     @Scheduled(fixedRate = 600, initialDelay = 0, timeUnit = TimeUnit.SECONDS)
