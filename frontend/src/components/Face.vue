@@ -1,13 +1,13 @@
 <script>
 import SkillLine from "@/components/SkillLine.vue";
-import springCore from '@/assets/spring-framework.svg'
+import face from '@/assets/me.png'
 
 export default {
   name: "Face",
   components: {SkillLine},
   data() {
     return {
-      springCore
+      face
     }
   }
 }
@@ -16,7 +16,7 @@ export default {
 <template>
   <div class="face-container">
     <div class="face-image-container">
-      <img class="face-image" src="@/assets/me.jpg" alt="Me"/>
+      <img class="face-image" :src="face" alt="Me"/>
     </div>
     <div class="info-container">
       <div class="face-text-container">Привет, меня зовут Денис, я fullstack разработчик с 1,5-а годами коммерческого опыта,
@@ -114,7 +114,7 @@ export default {
   .face-image-container {
     overflow: clip;
     border-radius: 50%;
-    flex-basis: 0%;
+    flex-basis: 50%;
     width: 280px;
     height: 280px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);

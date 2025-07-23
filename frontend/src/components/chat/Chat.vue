@@ -19,12 +19,20 @@ export default {
     }
   },
   methods: {
+    scrollToBottom() {
+      const container = this.$refs.scroll; // Получаем элемент по ref
+      if (container) {
+        container.scrollTop = container.scrollHeight; // Скроллим в самый низ
+      }
+    },
     sendMessage() {
+      this.isWaitingResponse = true
       const question = {
         isUser: true,
         text: this.message
       }
       this.messages.push(question)
+      this.$nextTick(() => this.scrollToBottom());
       axios.post('/api/gpt/question',
           {
             request: this.message
@@ -36,6 +44,18 @@ export default {
               text: response.data.response
             }
             this.messages.push(answer)
+            this.isWaitingResponse = false
+            this.$nextTick(() => this.scrollToBottom());
+          }
+      ).catch(
+          response => {
+            const answer = {
+              isUser: false,
+              text: 'Error: ошибка на сервере'
+            }
+            this.messages.push(answer)
+            this.isWaitingResponse = false
+            this.$nextTick(() => this.scrollToBottom());
           }
       )
       this.message = ''
@@ -47,13 +67,19 @@ export default {
 <template>
   <div class="chat-container">
     <div class="chat-body">
-      <div class="chat-messages">
+      <div ref="scroll" class="chat-messages">
         <message v-for="m in messages" :text="m.text" :is-user="m.isUser"></message>
+        <div v-if="isWaitingResponse" class="chat-loading">
+          <div class="chat-loading-point"/>
+          <div class="chat-loading-point"/>
+          <div class="chat-loading-point"/>
+        </div>
       </div>
       <div class="chat-bottom">
         <textarea
             class="textarea"
             v-model="message"
+            @keydown.enter.prevent="sendMessage"
             placeholder="Введите сообщение..."
         />
         <button class="button" @click="sendMessage">Отправить</button>
@@ -105,7 +131,7 @@ export default {
 .textarea {
   flex: 1;
   resize: none;
-  height: 40px;
+  height: 90%;
   padding: 8px 12px;
   font-size: 14px;
   border-radius: 10px;
@@ -139,5 +165,37 @@ export default {
 
 .chat-messages::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Edge */
+}
+
+.chat-loading {
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.chat-loading-point {
+  background: #393939;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  animation: points 1s ease infinite;
+}
+
+@keyframes points {
+ 0% {
+   scale: 1.5;
+ }
+  50% {
+    scale: 1;
+  }
+  100% {
+    scale: 1.5;
+  }
+
+}
+
+@media (max-width: 500px) {
+
 }
 </style>

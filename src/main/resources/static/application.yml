@@ -1,5 +1,0 @@
-spring:
-  application:
-    name: MyResume
-  jackson:
-    property-naming-strategy: SNAKE_CASE

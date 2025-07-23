@@ -34,22 +34,31 @@ export default {
 <style scoped>
 .message-container {
   margin: 10px;
-  padding: 5px 10px 10px 5px;
-  border-radius: 5px;
+  padding: 10px;
+  border-radius: 20px;
   word-wrap: break-word;       /* Перенос длинных слов */
   overflow-wrap: break-word;   /* Современный аналог */
   white-space: pre-wrap;
   max-width: 80%;
   background: #80b1e3;
   animation: showing 1s ease;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.85);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.1);
 }
 
 @keyframes showing {
   0% {
-    width: 0;
+    opacity: 0;
   }
   100% {
-    width: 80%;
+    opacity: 100%;
   }
 }
 </style>

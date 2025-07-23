@@ -21,6 +21,11 @@ export default defineConfig({
     vue(),
     vueDevTools(),
   ],
+  build: {
+    outDir: '../src/main/resources/static', // Куда класть билд
+    assetsDir: 'static-inner',        // Папка для статики внутри outDir
+    emptyOutDir: true           // Очищать папку перед сборкой
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),

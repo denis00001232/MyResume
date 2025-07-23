@@ -3,10 +3,11 @@ import Face from "@/components/Face.vue";
 import JobName from "@/components/JobName.vue";
 import Chat from "@/components/chat/Chat.vue";
 import MyStack from "@/components/MyStack.vue";
+import Links from "@/components/Links.vue";
 
 export default {
   name: "MainPanel",
-  components: {MyStack, Chat, JobName, Face}
+  components: {Links, MyStack, Chat, JobName, Face}
 }
 </script>
 
@@ -17,6 +18,7 @@ export default {
       <face/>
       <chat/>
       <my-stack/>
+      <links/>
     </div>
   </div>
 </template>

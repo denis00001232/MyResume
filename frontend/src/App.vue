@@ -1,6 +1,13 @@
-<script setup>
+<script>
 import BackgroundLines from "@/components/BackgroundLines.vue";
 import MainPanel from "@/components/MainPanel.vue";
+import {defineComponent} from "vue";
+
+export default defineComponent({
+  components: {MainPanel, BackgroundLines}
+})
+
+
 </script>
 
 <template>
