@@ -11,8 +11,8 @@ export default {
       messages: [
         {
           isUser: false,
-          text: "В этом окне вы можете пообщаться с gpt которая олицетворяет меня и на большую част" +
-              "ь вопросов ответила бы также как и я"
+          text: "В этом окне вы можете пообщаться с gpt-моделью, которая олицетворяет меня и на большую част" +
+              "ь вопросов ответила бы также как и я."
         }
       ],
       isWaitingResponse: false
@@ -196,6 +196,11 @@ export default {
 }
 
 @media (max-width: 500px) {
-
+  .chat-body {
+    padding: 0;
+  }
+  .chat-container {
+    background: rgba(208, 231, 255, 0);
+  }
 }
 </style>

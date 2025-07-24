@@ -4,4 +4,9 @@ spring:
   jackson:
     property-naming-strategy: SNAKE_CASE
 server:
-  port: 80
+  port: 443
+  ssl:
+    key-store: classpath:keystore.p12
+    key-store-password: 186Kdc9899
+    key-store-type: PKCS12
+    key-alias: tomcat

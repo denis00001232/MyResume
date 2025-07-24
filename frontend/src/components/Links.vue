@@ -1,6 +1,12 @@
 <script>
+import mePDF from '@/assets/Денис_Савченко.pdf'
 export default {
-  name: "Links"
+  name: "Links",
+  data() {
+    return {
+      mePDF
+    }
+  }
 }
 </script>
 
@@ -8,12 +14,19 @@ export default {
   <div class="links-container">
     <a href="https://t.me/Denis_Savchenko" target="_blank" class="telegram-btn">
       <img src="@/assets/telegram.svg" alt="Telegram" />
-      Написать в Telegram
+      <span class="pdf-button__text">Написать в Telegram.</span>
     </a>
     <a href="https://hh.ru/resume/b4845011ff0f28b1980039ed1f307671584746?from=share_ios" target="_blank" class="hh-button">
       Открыть резюме на hh.ru
     </a>
-
+    <a
+        :href="mePDF"
+        download
+        class="pdf-button"
+    >
+      <span class="pdf-button__text">Резюме в PDF</span>
+      <span class="pdf-button__icon">↓</span>
+    </a>
   </div>
 </template>
 
@@ -70,5 +83,36 @@ export default {
 .hh-button:hover {
   background-color: #ff334d;
   transform: translateY(-1px);
+}
+
+.pdf-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background-color: #4f46e5; /* Индиго */
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: none;
+  cursor: pointer;
+}
+
+.pdf-button:hover {
+  background-color: #4338ca; /* Темнее индиго */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.pdf-button:active {
+  transform: translateY(0);
+}
+
+.pdf-button__icon {
+  font-size: 1.2em;
 }
 </style>

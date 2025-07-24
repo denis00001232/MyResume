@@ -80,11 +80,6 @@ public class GigaChatService {
     public Mono<GptResponseDto> getGptResponse(String userRequest) {
         MessageConvertor messageConverter = new MessageConvertor();
         GigaChatRequestDto gigaChatRequestDto = messageConverter.setUserQuestion(userRequest);
-        try {
-            System.out.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(gigaChatRequestDto));
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
         return webClient.post().
                 uri("https://gigachat.devices.sberbank.ru/api/v1/chat/completions").
                 header("Authorization", "Bearer " + accessToken).

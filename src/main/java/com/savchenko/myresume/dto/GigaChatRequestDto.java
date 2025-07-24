@@ -8,7 +8,7 @@ import java.util.List;
 
 @Data
 public class GigaChatRequestDto {
-    private String model = "GigaChat-2-Max";
+    private String model = "GigaChat-2";
     private boolean stream = false;
     @JsonProperty("update_interval")
     private int updateInterval = 0;

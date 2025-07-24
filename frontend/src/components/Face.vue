@@ -19,9 +19,11 @@ export default {
       <img class="face-image" :src="face" alt="Me"/>
     </div>
     <div class="info-container">
-      <div class="face-text-container">Привет, меня зовут Денис, я fullstack разработчик с 1,5-а годами коммерческого опыта,
-        мой путь разработчика начался еще в 21 году, когда я только начал изучать java, а сейчас я уже способен
-        разрабатывать довольно сложные веб-приложения под любые ваши задачи.</div>
+      <div class="face-text-container">
+        Привет, меня зовут Денис — fullstack-developer с упором на backend, свой путь разработчика я начал еще в 21 году
+        когда впервые открыл Head First java, а сейчас я уже способен разрабатывать достаточно крупные и сложные веб-приложения
+        под любые задачи бизнеса.
+      </div>
     </div>
   </div>
 </template>
@@ -58,6 +60,7 @@ export default {
   flex-basis: 50%;
 }
 .face-text-container {
+  transform-style: preserve-3d;
   height: 100%;
   margin-right: 30px;
   border-radius: 20px;
@@ -72,6 +75,25 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+  animation: card-rotation 1s ease;
+}
+
+@keyframes card-rotation {
+  0% {
+    transform: rotateY(180deg);
+    color: rgba(0, 0, 0, 0);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0);
+  }
+  50% {
+    transform: rotateY(90deg);
+    color: rgba(0, 0, 0, 0);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0);
+  }
+  100% {
+    transform: rotateY(0deg);
+    color: rgba(0, 0, 0, 0.85);
+    text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+  }
 }
 
 @media (max-width: 900px) {
@@ -124,6 +146,7 @@ export default {
   .face-text-container {
     width: 100%;
     margin-right: 0;
+
   }
   .info-container {
     padding: 0;
@@ -132,8 +155,9 @@ export default {
 }
 
 @media (max-width: 600px) {
-  .info-container {
+  .face-text-container {
     background: rgba(255, 254, 254, 0.69);
+
   }
 }
 </style>
