@@ -7,10 +7,7 @@ import com.savchenko.myresume.gpt.SpamFilter;
 import com.savchenko.myresume.telegram.TelegramBotService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.server.reactive.ServerHttpRequest;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -29,4 +26,5 @@ public class GptController {
         }
         return gigaChatService.getGptResponse(gptRequestDto.getRequest());
     }
+
 }

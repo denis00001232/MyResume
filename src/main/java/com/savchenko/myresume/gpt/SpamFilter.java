@@ -15,18 +15,10 @@ import java.util.concurrent.TimeUnit;
 public class SpamFilter {
     private Map<String, UserRequests> ipMap = new HashMap<>();
 
-    SpamFilter() {
-        filter("127.0.0.1");
-        filter("127.0.0.1");
-        filter("127.0.0.1");
-        filter("127.0.0.1");
-        System.out.println(filter("127.0.0.1"));
-    }
-
     public boolean filter(String ip) {
-
         if (ipMap.containsKey(ip)) {
-            if (ipMap.get(ip).getAmount() > 3) {
+            System.out.println(ipMap.get(ip).getAmount());
+            if (ipMap.get(ip).getAmount() > 2) {
                 return true;
             }
             else {
@@ -35,15 +27,15 @@ public class SpamFilter {
             }
         }
         else {
-            UserRequests userRequests = new UserRequests(0, System.currentTimeMillis());
+            UserRequests userRequests = new UserRequests(1, System.currentTimeMillis());
             ipMap.put(ip, userRequests);
             return false;
         }
     }
 
 
-    @Scheduled(initialDelay = 5000, fixedDelay = 60, timeUnit = TimeUnit.SECONDS)
-    private synchronized void clearFilter() {
+    @Scheduled(initialDelay = 0, fixedDelay = 60, timeUnit = TimeUnit.SECONDS)
+    public synchronized void clearFilter() {
         for (Map.Entry<String, UserRequests> entry : ipMap.entrySet()) {
             UserRequests userRequests = entry.getValue();
             if (System.currentTimeMillis() - userRequests.getFirstTry() > 60 * 60 * 1000) {

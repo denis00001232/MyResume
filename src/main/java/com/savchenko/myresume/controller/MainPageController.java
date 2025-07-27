@@ -1,16 +1,13 @@
 package com.savchenko.myresume.controller;
 
-import com.savchenko.myresume.dto.GptRequestDto;
-import com.savchenko.myresume.dto.GptResponseDto;
-import com.savchenko.myresume.gpt.GigaChatService;
 import com.savchenko.myresume.telegram.TelegramBotService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.server.reactive.ServerHttpRequest;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
-
 
 @RestController
 @RequiredArgsConstructor

@@ -14,7 +14,6 @@ public class TelegramBotService {
 
     public void sendMessage(String message, String ip) {
         webClient.get().
-
                 uri(uriBuilder -> uriBuilder
                         .path("/sendMessage")
                         .queryParam("chat_id", "1043989413")  // Добавляем параметры
